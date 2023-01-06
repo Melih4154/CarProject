@@ -1,0 +1,22 @@
+const express = require("express");
+const helmet = require("helmet");
+const config = require("./config");
+const loaders = require("./loaders");
+const cors = require("cors");
+const { ProductRoutes, VehicleRoutes, AuthRoutes } = require("./api-routes");
+
+config();
+loaders();
+
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+app.use(helmet());
+
+app.listen(process.env.APP_PORT, () => {
+  console.log("Sunucu ayağa kalktı");
+  app.use("/v1/products", ProductRoutes);
+  app.use("/v1/vehicles", VehicleRoutes);
+  app.use("/v1/auth", AuthRoutes);
+});
