@@ -1,5 +1,7 @@
 const httpStatus = require("http-status");
-const AuthService = require("../services/AuthService");
+const CompanyService = require("../services/CompanyService");
+const IndividualService = require("../services/IndividualService");
+const UserService = require("../services/UserService");
 const {
   hashToPassword,
   generateAccessToken,
@@ -9,7 +11,7 @@ const {
 class AuthController {
   login(req, res) {
     req.body.password = hashToPassword(req.body.password);
-    AuthService.findOne(req.body).then((user) => {
+    UserService.findOne(req.body).then((user) => {
       if (!user) {
         return res
           .status(httpStatus.NOT_FOUND)
@@ -30,21 +32,49 @@ class AuthController {
     });
   }
 
-  register(req, res) {
-    AuthService.findOne({
+  registerIndividual(req, res) {
+    UserService.findOne({
       user_name: req.body.user_name,
     }).then((name) => {
       if (!name) {
-        return AuthService.findOne({ email: req.body.email }).then((mail) => {
+        return UserService.findOne({ email: req.body.mail }).then((mail) => {
           if (!mail) {
             req.body.password = hashToPassword(req.body.password);
             req.body.login_type = "user";
-            return AuthService.create(req.body)
+            return IndividualService.create(req.body)
               .then((user) => res.status(httpStatus.OK).send(user))
               .catch((e) =>
                 res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e)
               );
           }
+          console.log(mail);
+          return res
+            .status(httpStatus.BAD_REQUEST)
+            .send({ error: "Bu mail zaten kullanılıyor." });
+        });
+      }
+      return res
+        .status(httpStatus.BAD_REQUEST)
+        .send({ error: "Bu Kullanıcı adı zaten kullanılıyor." });
+    });
+  }
+
+  registerCompany(req, res) {
+    UserService.findOne({
+      user_name: req.body.user_name,
+    }).then((name) => {
+      if (!name) {
+        return UserService.findOne({ email: req.body.mail }).then((mail) => {
+          if (!mail) {
+            req.body.password = hashToPassword(req.body.password);
+            req.body.login_type = "user";
+            return CompanyService.create(req.body)
+              .then((user) => res.status(httpStatus.OK).send(user))
+              .catch((e) =>
+                res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e)
+              );
+          }
+          console.log(mail);
           return res
             .status(httpStatus.BAD_REQUEST)
             .send({ error: "Bu mail zaten kullanılıyor." });

@@ -3,7 +3,7 @@ const VehicleService = require("../services/VehicleService");
 
 class ProductController {
   getAll(req, res) {
-    VehicleService.find({ user_id: req.user?._id })
+    VehicleService.getAll({ user_id: req.user?._id })
       .then((vehicle) => res.status(httpStatus.OK).send(vehicle))
       .catch((e) =>
         res

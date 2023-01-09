@@ -3,7 +3,12 @@ const helmet = require("helmet");
 const config = require("./config");
 const loaders = require("./loaders");
 const cors = require("cors");
-const { ProductRoutes, VehicleRoutes, AuthRoutes } = require("./api-routes");
+const {
+  ProductRoutes,
+  VehicleRoutes,
+  AuthRoutes,
+  UserRoutes,
+} = require("./api-routes");
 
 config();
 loaders();
@@ -19,4 +24,5 @@ app.listen(process.env.APP_PORT, () => {
   app.use("/v1/products", ProductRoutes);
   app.use("/v1/vehicles", VehicleRoutes);
   app.use("/v1/auth", AuthRoutes);
+  app.use("/v1/user", UserRoutes);
 });

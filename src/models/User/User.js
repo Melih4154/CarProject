@@ -2,7 +2,6 @@ const Mongoose = require("mongoose");
 
 const UserSchema = new Mongoose.Schema(
   {
-    full_name: String,
     city: String,
     phone: String,
     login_type: String,
