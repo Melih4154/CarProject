@@ -34,6 +34,28 @@ class UserController {
         );
     });
   }
+
+  updateProduct(req, res) {
+    CompanyService.findOne({ _id: req.user?._id }).then((user) => {
+      CompanyService.update(req.user?._id, req.body)
+        .then((userUpdate) => {
+          userUpdate.products = user.products.concat(req.body.products);
+          userUpdate
+            .save()
+            .then((updatedUser) => res.status(httpStatus.OK).send(updatedUser))
+            .catch((e) =>
+              res
+                .status(httpStatus.INTERNAL_SERVER_ERROR)
+                .send({ error: "Bir hata oluştu..." })
+            );
+        })
+        .catch((e) =>
+          res
+            .status(httpStatus.INTERNAL_SERVER_ERROR)
+            .send({ error: "Bir hata oluştu..." })
+        );
+    });
+  }
 }
 
 module.exports = new UserController();

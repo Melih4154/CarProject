@@ -1,7 +1,7 @@
 const Mongoose = require("mongoose");
 const UserSchema = require("./User");
 
-const CorporateUserSchema = new Mongoose.Schema(
+const CompanySchema = new Mongoose.Schema(
   {
     company_name: String,
     products: [
@@ -25,4 +25,4 @@ const CorporateUserSchema = new Mongoose.Schema(
   { versionKey: false, timestamps: true }
 );
 
-module.exports = UserSchema.discriminator("company", CorporateUserSchema);
+module.exports = UserSchema.discriminator("company", CompanySchema);

@@ -14,7 +14,7 @@ const DemandSchema = new Mongoose.Schema(
       type: Mongoose.Types.ObjectId,
       ref: "product",
     },
-    demandDetail: String,
+    demand_detail: String,
     comments: [
       {
         value: String,
@@ -25,6 +25,7 @@ const DemandSchema = new Mongoose.Schema(
         },
       },
     ],
+    city: String,
   },
   { versionKey: false, timestamps: true }
 );
