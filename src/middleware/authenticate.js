@@ -20,16 +20,16 @@ const authenticateToken = (req, res, next) => {
   });
 };
 
-isAdmin = (req, res, next) => {
-  if (req.user?.__t === "admin") {
-    next();
-    return;
-  }
-  res.status(httpStatus.UNAUTHORIZED).send({ error: "Yetkisiz İşlem" });
-};
+// isAdmin = (req, res, next) => {
+//   if (req.user?.__t === "admin") {
+//     next();
+//     return;
+//   }
+//   res.status(httpStatus.UNAUTHORIZED).send({ error: "Yetkisiz İşlem" });
+// };
 
-isCorporate = (req, res, next) => {
-  if (req.user?.__t === "corporate") {
+isCompany = (req, res, next) => {
+  if (req.user?.__t === "company") {
     next();
     return;
   }
@@ -46,8 +46,8 @@ isUser = (req, res, next) => {
 
 const authJwt = {
   authenticateToken,
-  isAdmin,
-  isCorporate,
+  //isAdmin,
+  isCompany,
   isUser,
 };
 module.exports = authJwt;

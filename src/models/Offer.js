@@ -11,8 +11,7 @@ const OfferSchema = new Mongoose.Schema(
       type: Mongoose.Types.ObjectId,
       ref: "user",
     },
-    created_at: Date,
-    offerDetail: String,
+    offer_detail: String,
     comments: [
       {
         value: String,

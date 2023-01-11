@@ -31,12 +31,10 @@ class DemandController {
       .then((user) => {
         const products = user.products;
         return DemandService.getAll({
-          city: req.user?.city,
+          city: user.city,
           product_id: products,
         })
-          .then((demands) => {
-            res.status(httpStatus.OK).send(demands);
-          })
+          .then((demands) => res.status(httpStatus.OK).send(demands))
           .catch((e) =>
             res
               .status(httpStatus.INTERNAL_SERVER_ERROR)
