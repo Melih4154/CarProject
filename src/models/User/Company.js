@@ -11,9 +11,11 @@ const CompanySchema = new Mongoose.Schema(
       },
     ],
     tax_number: String,
+    address: String,
     comments: [
       {
         value: String,
+        star: Number,
         created_at: Date,
         user_id: {
           type: Mongoose.Types.ObjectId,
