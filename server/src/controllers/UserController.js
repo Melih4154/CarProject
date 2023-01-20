@@ -4,7 +4,7 @@ const IndividualService = require("../services/IndividualService");
 const UserService = require("../services/UserService");
 const {
   hashToPassword,
-} = require("d:/new/project/v1/src/scripts/utils/helper");
+} = require("../script/utils/helper");
 
 class UserController {
   getProfile(req, res) {

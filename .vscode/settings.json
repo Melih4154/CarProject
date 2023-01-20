@@ -1,0 +1,5 @@
+{
+    "editor.comments.ignoreEmptyLines": true,
+    "dart.lineLength": 500,
+    "editor.renderLineHighlight": "line"
+}

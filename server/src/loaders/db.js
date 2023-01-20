@@ -9,7 +9,8 @@ db.once("open", () => {
 const connectDB = async () => {
   Mongoose.set("strictQuery", false);
   await Mongoose.connect(
-    `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
+    'mongodb://127.0.0.1:27017/StartACar'
+   // `mongodb://${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`
   ),
     {
       useNewUrlParser: true,
