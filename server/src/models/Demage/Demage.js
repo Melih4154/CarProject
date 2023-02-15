@@ -5,25 +5,28 @@ const DemageSchema = new Mongoose.Schema(
     file_number: Number,
     crash_date: Date,
 
-    name: String,
-    number_plate: String,
-
-    id_number: String,
-    explanation: String,
-
-    status: {
-      type: Mongoose.Types.ObjectId,
-      ref: "status",
-    },
-
-    subject: {
-      type: Mongoose.Types.ObjectId,
-      ref: "subject",
-    },
-    registrant: {
+    user_id: {
       type: Mongoose.Types.ObjectId,
       ref: "user",
     },
+
+    vehicle_id: {
+      type: Mongoose.Types.ObjectId,
+      ref: "vehicle",
+    },
+    explanation: String,
+
+    status: String,
+    // {
+    //   type: Mongoose.Types.ObjectId,
+    //   ref: "status",
+    // },
+
+    subject: String,
+    // {
+    //   type: Mongoose.Types.ObjectId,
+    //   ref: "subject",
+    // },
 
     personel: {
       type: Mongoose.Types.ObjectId,
@@ -31,14 +34,14 @@ const DemageSchema = new Mongoose.Schema(
     },
     arbitration_number: String,
 
-    //demage_team: 
+    //demage_team:
     expert: String,
-    
-    sender:  {
-      type: Mongoose.Types.ObjectId,
-      ref: "user",
-    },
-    sender_note: String,    
+
+    // sender: {
+    //   type: Mongoose.Types.ObjectId,
+    //   ref: "user",
+    // },
+    // sender_note: String,
   },
   { versionKey: false, timestamps: true }
 );
