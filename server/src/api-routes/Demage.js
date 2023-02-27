@@ -20,7 +20,7 @@ router.route("/").post(
 );
 
 router.route("/").get(
-  authenticateToken,
+ // authenticateToken,
   //[authenticateToken, isUser],
   DemageController.getAll
 );

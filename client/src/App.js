@@ -1,16 +1,16 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <div className="App">
-      <div className="text-red-500">Home</div>
-      {/* <BrowserRouter>
+      <BrowserRouter>
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
             <Route path='login' element={<Login />} />
-            <Route path='users'>
+            {/* <Route path='users'>
               <Route index element={<List />} />
               <Route path=':userId' element={<Single />} />
               <Route path='new' element={<New />} />
@@ -19,10 +19,10 @@ function App() {
               <Route index element={<Target />} />
               <Route path=':day' element={<Single />} />
               <Route path='new' element={<New />} />
-            </Route>
+            </Route> */}
           </Route>
         </Routes>
-      </BrowserRouter> */}
+      </BrowserRouter>
     </div>
   );
 }

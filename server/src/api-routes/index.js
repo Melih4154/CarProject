@@ -4,3 +4,4 @@ module.exports.AuthRoutes = require("./Auth");
 module.exports.UserRoutes = require("./User");
 module.exports.DemandRoutes = require("./Demand");
 module.exports.OfferRoutes = require("./Offer");
+module.exports.DemageRoutes = require("./Demage");

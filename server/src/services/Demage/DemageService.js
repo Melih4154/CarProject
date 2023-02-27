@@ -12,10 +12,10 @@ class DemageService extends BaseService {
         path: "user_id",
         select: "user_name id_number",
       })
-      .populate({
-        path: "vehicle_id",
-        select: "number_plate",
-      });
+      // .populate({
+      //   path: "vehicle_id",
+      //   select: "number_plate",
+      // });
   }
 
   findOne(where) {

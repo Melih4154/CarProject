@@ -10,6 +10,7 @@ const {
   UserRoutes,
   DemandRoutes,
   OfferRoutes,
+  DemageRoutes,
 } = require("./api-routes");
 
 config();
@@ -29,4 +30,5 @@ app.listen(process.env.APP_PORT, () => {
   app.use("/v1/user", UserRoutes);
   app.use("/v1/demands", DemandRoutes);
   app.use("/v1/offers", OfferRoutes);
+  app.use("/v1/demage", DemageRoutes);
 });

@@ -10,10 +10,10 @@ const DemageSchema = new Mongoose.Schema(
       ref: "user",
     },
 
-    vehicle_id: {
-      type: Mongoose.Types.ObjectId,
-      ref: "vehicle",
-    },
+    // vehicle_id: {
+    //   type: Mongoose.Types.ObjectId,
+    //   ref: "vehicle",
+    // },
     explanation: String,
 
     status: String,
@@ -42,6 +42,15 @@ const DemageSchema = new Mongoose.Schema(
     //   ref: "user",
     // },
     // sender_note: String,
+
+    brand: String,
+    usage: String,
+    engine_number: String,
+    model: String,
+    type: String,
+    chassis_number: String,
+    number_plate: String,
+
   },
   { versionKey: false, timestamps: true }
 );
