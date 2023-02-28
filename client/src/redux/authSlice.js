@@ -1,87 +1,56 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
-import axios from "axios";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit"; 
 
-const userToken = localStorage.getItem('userToken')
-  ? localStorage.getItem('userToken')
-  : null
+import AuthService from "../services/auth.service";
+import { setMessage } from "./message";
 
-const initialState = {
-  loading: false,
-  userInfo: null,
-  userToken,
-  error: null,
-  success: false,
-}
-export const userLogin = createAsyncThunk(
-    'auth',
-    async ({  email, password }, { rejectWithValue }) => {
-      try {
-        const {data}  = await axios.post(
-          `http://localhost:3000/v1/auth`,
-          { email, password }, 
-        )
-        localStorage.setItem('userToken', data.userToken)
-        return data
-      } catch (error) { 
-        if (error.response && error.response.data.message) {
-          return rejectWithValue(error.response.data.message)
-        } else {
-          return rejectWithValue(error.message)
-        }
-      }
+const user = JSON.parse(localStorage.getItem("user"));
+
+
+export const login = createAsyncThunk(
+  "auth/login",
+  async ({ user_name, password }, thunkAPI) => {
+    try {
+      const data = await AuthService.login(user_name, password);
+      return { user: data };
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue();
     }
-  )
+  }
+);
+
+export const logout = createAsyncThunk("auth/logout", async () => {
+  await AuthService.logout();
+});
+
+const initialState = user
+  ? { isLoggedIn: true, user }
+  : { isLoggedIn: false, user: null};
 
 const authSlice = createSlice({
-  name: 'auth',
+  name: "auth",
   initialState,
-  reducers: {
-    logOut: (state, action) => {
-        state.user = null
-        state.token = null
-    }
-  },
-  extraReducers: { 
-    [userLogin.pending]: (state) => {
-      state.loading = true
-      state.error = null
-    },
-    [userLogin.fulfilled]: (state, { payload }) => {
-      state.loading = false
-      state.userInfo = payload
-      state.userToken = payload.userToken
-    },
-    [userLogin.rejected]: (state, { payload }) => {
-      state.loading = false
-      state.error = payload
-    }, 
-  },
-})
-export default authSlice.reducer
-export const {  logOut } = authSlice.actions
+  extraReducers: (builder)=>{
+    builder.addCase(login.fulfilled, (state,action)=> {
+      state.isLoggedIn = true;
+      state.user = action.payload.user;
+    });
+    builder.addCase(login.rejected, (state,action)=> {
+      state.isLoggedIn = false; 
+      state.user = null;
+    });
+    builder.addCase(logout.fulfilled, (state,action)=> {
+      state.isLoggedIn = false;
+      state.user = null;
+    });
+  }
+});
 
-
-// import { createSlice } from "@reduxjs/toolkit"
-
-// const authSlice = createSlice({
-//     name: 'auth',
-//     initialState: { user: null, token: null },
-//     reducers: {
-//         setCredentials: (state, action) => {
-//             const { user, accessToken } = action.payload
-//             state.user = user
-//             state.token = accessToken
-//         },
-//         logOut: (state, action) => {
-//             state.user = null
-//             state.token = null
-//         }
-//     },
-// })
-
-// export const { setCredentials, logOut } = authSlice.actions
-
-// export default authSlice.reducer
-
-// export const selectCurrentUser = (state) => state.auth.user
-// export const selectCurrentToken = (state) => state.auth.token
+const { reducer } = authSlice;
+export default reducer;
