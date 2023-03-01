@@ -1,18 +1,30 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"; 
+import demageService from "../services/demage.service";
+import { setMessage } from "./message";
 
 
 const initialState = {
     data : [],
-    loading: false,
-    error: "",
+    status: "idle", 
 };
 
-export const fetchDemage = createAsyncThunk('fetchDemage', async ()=>{
-  const response =   await axios.get("http://localhost:3000/v1/demage");
-
-  return response.data;
-});
+export const fetchDemage = createAsyncThunk(
+    "fetchDemage",
+    async (thunkAPI) => {
+      try {
+        const data = await demageService.getAll();
+        return data;
+      } catch (error) {
+        const message =
+          (error.response && error.response.data && error.response.data.error) ||
+          error.message ||
+          error.toString();
+        thunkAPI.dispatch(setMessage(message));
+        return thunkAPI.rejectWithValue();
+      }
+    }
+  );
+ 
 
 const demageSlice = createSlice({
     name: "demage",
@@ -20,19 +32,18 @@ const demageSlice = createSlice({
     reducers: {},
     extraReducers: (builder)=>{
         builder.addCase(fetchDemage.pending, (state, action)=> {
-            state.loading = true;
-            state.error= "";
+            state.status = "loading"; 
         });
         builder.addCase(fetchDemage.fulfilled, (state,action)=> {
-            state.data= action.payload;
-            state.loading = false;
+            state.data= action.payload; 
+            state.status = "succeeded"
         });
 
         builder.addCase(fetchDemage.rejected,(state, action)=>{
-            state.loading =false;
-            state.error = "Bir Hata Oluştu";
+            state.status ="failed"; 
         })
     }
 });
 
 export default demageSlice.reducer;
+export const selectAllDemage = (state) => state.data
