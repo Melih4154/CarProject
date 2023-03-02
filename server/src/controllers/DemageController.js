@@ -37,6 +37,7 @@ class DemageController {
           .send({ error: "Bir hata oluştu." })
       );
   }
+ 
 }
 
 module.exports = new DemageController();

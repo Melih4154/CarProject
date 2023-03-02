@@ -14,15 +14,27 @@ function Sidebar() {
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Dat Raporu</span>
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Sigorta</span>
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Tahkim</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Eksper</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Ön Ödeme</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Ödeme</span>
                         </div>
                     </div>
                     <div className='flex lg:hidden w-8 h-8 translate-x-12 border border-gray-400 rounded items-center justify-center' onClick={() => setshowSidebar(false)}>
@@ -40,15 +52,27 @@ function Sidebar() {
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Dat Raporu</span>
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Sigorta</span>
                         </div>
                         <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
                             <AiOutlineFileSearch />
-                            <span className='text-white'>Dosya Bilgileri</span>
+                            <span className='text-white'>Tahkim</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Eksper</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Ön Ödeme</span>
+                        </div>
+                        <div className='group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 '>
+                            <AiOutlineFileSearch />
+                            <span className='text-white'>Ödeme</span>
                         </div>
                     </div>
                 </div>

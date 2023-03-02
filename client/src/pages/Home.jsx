@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, Navigate } from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDemage, selectAllDemage } from "../redux/demageSlice";
@@ -9,6 +9,8 @@ const Home = () => {
 
   const { user: currentUser } = useSelector((state) => state.auth);
 
+   
+
   const dispatch = useDispatch();
   const demages = useSelector((state) => state.demage);
   //const demages = useSelector(selectAllDemage)
@@ -17,7 +19,7 @@ const Home = () => {
   useEffect(() => {
     if (demagesStatus === 'idle') {
       dispatch(fetchDemage())
-    }
+    } 
   }, [demagesStatus, dispatch]);
 
 
@@ -31,27 +33,35 @@ const Home = () => {
   if (demagesStatus === 'loading') {
     content = <div>Loading</div>
   } else if (demagesStatus === 'succeeded') {
-    content = <TableComponent head={[
-      { name: 'D.No', sortable: true },
-      { name: 'İsim Soyisim' },
-      { name: 'T.C.No', sortable: true },
-      { name: 'Plaka', width: 200 },
-      { name: 'Kayıt Tarihi', width: 200 },
-      { name: 'Kaza Tarihi', width: 200 },
-      { name: 'Dosya Konusu', width: 200 },
-      { name: 'Durum', width: 200 },
-      { name: 'İşlemler', width: 200 },
-    ]} body={demages.data.map((demage, key) => (
-      [demage.file_number, demage.user_id.full_name, demage.user_id.id_number, demage.number_plate, demage.createdAt, demage.crash_date, demage.subject, demage.status,
-        <Link  to={`/${demage._id}`} state={demage}> <div className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white">Detay</div></Link>]
-    ))} />
+    content = <TableComponent 
+    // head={[
+    //   { name: 'D.No', sortable: true },
+    //   { name: 'İsim Soyisim' },
+    //   { name: 'T.C.No', sortable: true },
+    //   { name: 'Plaka', width: 200 },
+    //   { name: 'Kayıt Tarihi', width: 200 },
+    //   { name: 'Kaza Tarihi', width: 200 },
+    //   { name: 'Dosya Konusu', width: 200 },
+    //   { name: 'Durum', width: 200 },
+    //   { name: 'İşlemler', width: 200 },
+    // ]}  
+    // body={demages.data.map((demage, key) => (
+    //   [demage.file_number, demage.user_id.full_name, demage.user_id.id_number, demage.number_plate, demage.createdAt, demage.crash_date, demage.subject, demage.status,
+    //     <Link  to={`/${demage._id}`} state={demage}> <div className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white">Detay</div></Link>]
+    // ))}
+    data={demages.data} 
+    />
   }
 
   return (
     <div className="w-full">
       <Navbar />
       <div className="p-4">
-        <h2>Posts</h2>
+      {/* <input
+          className="search"
+          placeholder="Search..."
+          onChange={""}
+        /> */}
         {content}
       </div>
       {/* {console.log(demagesStatus)}

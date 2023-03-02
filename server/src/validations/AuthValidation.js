@@ -16,6 +16,8 @@ const registerUserValidation = Joi.object({
   user_name: Joi.string().required().min(4),
   mail: Joi.string().email().required(),
   password: Joi.string().required().min(5),
+  full_name: Joi.string().required().min(5),
+  id_number: Joi.string().required().min(11),
 });
 
 module.exports = {

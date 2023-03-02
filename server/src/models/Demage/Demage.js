@@ -50,7 +50,6 @@ const DemageSchema = new Mongoose.Schema(
     type: String,
     chassis_number: String,
     number_plate: String,
-
   },
   { versionKey: false, timestamps: true }
 );

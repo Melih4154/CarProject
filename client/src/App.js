@@ -10,7 +10,7 @@ function App() {
         <Routes>
           <Route path="/">
             <Route index element={<Home />} />
-            <Route path="/:demage_id" element={<Detail />} />
+            <Route path="demage/:demage_id" element={<Detail />} />
             <Route path='login' element={<Login />} /> 
             {/* <Route path='users'>
               <Route index element={<List />} />
