@@ -2,15 +2,13 @@ const httpStatus = require("http-status");
 const CompanyService = require("../services/CompanyService");
 const IndividualService = require("../services/IndividualService");
 const UserService = require("../services/UserService");
-const {
-  hashToPassword,
-} = require("../script/utils/helper");
+const { hashToPassword } = require("../script/utils/helper");
 
 class UserController {
   getProfile(req, res) {
     UserService.findOne({ _id: req.user?._id })
       .then((user) => {
-        if (user.__t == "company") {
+        if (user.__t === "company") {
           return CompanyService.findOne({ _id: user._id })
             .then((user) => res.status(httpStatus.OK).send(user))
             .catch((e) =>
@@ -19,7 +17,6 @@ class UserController {
                 .send({ error: "Bir hata oluştu" })
             );
         }
-
         return res.status(httpStatus.OK).send(user);
       })
       .catch((e) =>

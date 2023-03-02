@@ -3,10 +3,8 @@ const DemageService = require("../services/Demage/DemageService");
 
 class DemageController {
   create(req, res) {
-    req.body.user_id = req.user; 
     DemageService.create(req.body)
-      .then((demage) => res.status(httpStatus.CREATED).send(demage)
-      )
+      .then((demage) => res.status(httpStatus.CREATED).send(demage))
       .catch((e) =>
         res
           .status(httpStatus.INTERNAL_SERVER_ERROR)
@@ -37,7 +35,6 @@ class DemageController {
           .send({ error: "Bir hata oluştu." })
       );
   }
- 
 }
 
 module.exports = new DemageController();

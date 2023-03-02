@@ -1,19 +1,19 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:3000/v1/";
+import authHeader from "./auth-header";
 
+const API_URL = "http://localhost:3000/v1/";
 
 const getAll = () => {
   return axios
-    .get(API_URL + "demage")
+    .get(API_URL + "demage", { headers: authHeader() })
     .then((response) => {
-          return response.data;
+      return response.data;
     });
 };
 
 const demageService = {
-    getAll
-  };
-
+  getAll,
+};
 
 export default demageService;

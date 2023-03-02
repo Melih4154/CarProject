@@ -5,5 +5,4 @@ module.exports.UserRoutes = require("./User");
 module.exports.DemandRoutes = require("./Demand");
 module.exports.OfferRoutes = require("./Offer");
 module.exports.DemageRoutes = require("./Demage");
-module.exports.StatusRoutes = require("./Status");
 module.exports.DocumentRoutes = require("./Document");

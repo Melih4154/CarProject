@@ -13,11 +13,13 @@ import { configureStore } from "@reduxjs/toolkit";
 import authReducer from "../redux/authSlice";
 import demageReducer from "../redux/demageSlice";
 import messageReducer from "../redux/message";
+import documentReducer from "../redux/documentSlice";
 
 const reducer = {
   auth: authReducer,
   message: messageReducer,
   demage: demageReducer,
+  document: documentReducer,
 };
 
 const store = configureStore({

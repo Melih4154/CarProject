@@ -1,15 +1,13 @@
 const express = require("express");
 const DocumentController = require("../controllers/DocumentController");
-const {
-  authenticateToken, 
-} = require("../middleware/authenticate");
+const { authenticateToken } = require("../middleware/authenticate");
 const validate = require("../middleware/validate");
 const schemas = require("../validations/DemandValidation");
 const idChecker = require("../middleware/idChecker");
 
 const router = express.Router();
 
-router.route("/:demage_id/:status_id").post(
+router.route("/:status/:demage_id").post(
   authenticateToken,
   //[authenticateToken, isUser],
   //validate(schemas.createValidation),

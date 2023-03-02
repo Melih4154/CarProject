@@ -6,7 +6,7 @@ const path = require("path");
 class DocumentController {
   create(req, res) {
     req.body.demage_id = req.params.demage_id;
-    req.body.status_id = req.params.status_id;
+    req.body.status = req.params.status;
 
     if (!req?.files?.document) {
       return res
@@ -16,12 +16,19 @@ class DocumentController {
 
     const extension = path.extname(req.files.document.name);
     const title = req.body.title.replace(" ", "");
-    const fileName = req.params.file_number + "." + req.params.status_id + "." + title + extension;
-    const folderPath = path.join(__dirname, "../", `/uploads`, fileName);
+    const fileName = req.params.demage_id + "-" + title + extension;
+    const folderPath = path.join(
+      __dirname,
+      "../",
+      `/uploads/${req.params.status}`,
+      fileName
+    );
 
     req?.files?.document.mv(folderPath, function (err) {
       if (err) {
-        return res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: err });
+        return res
+          .status(httpStatus.INTERNAL_SERVER_ERROR)
+          .send({ error: err });
       }
 
       return DocumentService.create(req.body)

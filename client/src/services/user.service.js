@@ -1,6 +1,6 @@
-import axios from "axios"; 
+import axios from "axios";
 
-import authHeader from "./auth.header";
+import authHeader from "./auth-header";
 const API_URL = "http://localhost:3000/v1/user";
 
 const getPublicContent = () => {
@@ -12,11 +12,11 @@ const getUserBoard = () => {
 };
 
 const getModeratorBoard = () => {
-  return axios.get(API_URL + "mod", );
+  return axios.get(API_URL + "mod");
 };
 
 const getAdminBoard = () => {
-  return axios.get(API_URL + "admin",);
+  return axios.get(API_URL + "admin");
 };
 
 const userService = {
@@ -26,4 +26,4 @@ const userService = {
   getAdminBoard,
 };
 
-export default userService
+export default userService;

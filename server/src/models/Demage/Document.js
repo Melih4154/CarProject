@@ -2,16 +2,12 @@ const Mongoose = require("mongoose");
 
 const StatusSchema = new Mongoose.Schema(
   {
-    demage_id:{
-        type: Mongoose.Types.ObjectId,
+    demage_id: {
+      type: Mongoose.Types.ObjectId,
       ref: "demage",
     },
-    status_id:{
-        type: Mongoose.Types.ObjectId,
-      ref: "status",
-    },
-    title:String,
-
+    status: String,
+    title: String,
   },
   { versionKey: false, timestamps: true }
 );

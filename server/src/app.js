@@ -38,6 +38,5 @@ app.listen(process.env.APP_PORT, () => {
   app.use("/v1/demands", DemandRoutes);
   app.use("/v1/offers", OfferRoutes);
   app.use("/v1/demage", DemageRoutes);
-  app.use("/v1/status", StatusRoutes);
   app.use("/v1/document", DocumentRoutes);
 });

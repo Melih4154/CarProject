@@ -7,19 +7,14 @@ class DemageService extends BaseService {
   }
 
   getAll(where) {
-    return this.BaseModel.find(where || {})
-      .populate({
-        path: "user_id",
-        select: "user_name full_name id_number",
-      })
-      .populate({
-        path: "personel",
-        select: "user_name full_name id_number"
-      })
-      // .populate({
-      //   path: "vehicle_id",
-      //   select: "number_plate",
-      // });
+    return this.BaseModel.find(where || {}).populate({
+      path: "personel",
+      select: "user_name full_name id_number",
+    });
+    // .populate({
+    //   path: "vehicle_id",
+    //   select: "number_plate",
+    // });
   }
 
   findOne(where) {

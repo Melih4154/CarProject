@@ -4,11 +4,13 @@ const DemageSchema = new Mongoose.Schema(
   {
     file_number: Number,
     crash_date: Date,
+    full_name: String,
+    id_number: String,
 
-    user_id: {
-      type: Mongoose.Types.ObjectId,
-      ref: "user",
-    },
+    // user_id: {
+    //   type: Mongoose.Types.ObjectId,
+    //   ref: "user",
+    // },
 
     // vehicle_id: {
     //   type: Mongoose.Types.ObjectId,
