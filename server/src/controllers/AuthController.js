@@ -46,8 +46,7 @@ class AuthController {
               .catch((e) =>
                 res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e)
               );
-          }
-          console.log(mail);
+          } 
           return res
             .status(httpStatus.BAD_REQUEST)
             .send({ error: "Bu mail zaten kullanılıyor." });
@@ -73,8 +72,7 @@ class AuthController {
               .catch((e) =>
                 res.status(httpStatus.INTERNAL_SERVER_ERROR).send(e)
               );
-          }
-          console.log(mail);
+          } 
           return res
             .status(httpStatus.BAD_REQUEST)
             .send({ error: "Bu mail zaten kullanılıyor." });

@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import {  Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchDemage, selectAllDemage } from "../redux/demageSlice";
-import Navbar from "../components/navbar";
+import { fetchDemage } from "../redux/demageSlice";
+import Navbar from "../components/Navbar";
 import TableComponent from "../components/Table";
 
 const Home = () => {

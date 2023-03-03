@@ -9,9 +9,9 @@ const initialState = {
 
 export const fetchDocument = createAsyncThunk(
   "fetchDocument",
-  async (thunkAPI) => {
+  async ({ status, demage_id }, thunkAPI) => {
     try {
-      const data = await documentService.getAll();
+      const data = await documentService.getAll(status,demage_id);
       return data;
     } catch (error) {
       const message =
@@ -22,7 +22,7 @@ export const fetchDocument = createAsyncThunk(
       return thunkAPI.rejectWithValue();
     }
   }
-);
+); 
 
 const documentSlice = createSlice({
   name: "document",
@@ -40,6 +40,8 @@ const documentSlice = createSlice({
     builder.addCase(fetchDocument.rejected, (state, action) => {
       state.status = "failed";
     });
+
+ 
   },
 });
 

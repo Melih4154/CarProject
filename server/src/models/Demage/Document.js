@@ -8,6 +8,8 @@ const StatusSchema = new Mongoose.Schema(
     },
     status: String,
     title: String,
+    file_name:String,
+    type: String,
   },
   { versionKey: false, timestamps: true }
 );

@@ -4,8 +4,9 @@ import {
   AiOutlineFileSearch,
   AiOutlineMenuUnfold,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-function Sidebar() {
+function Sidebar({demage}) {
   const [showSidebar, setshowSidebar] = useState(false);
 
   return (
@@ -15,15 +16,16 @@ function Sidebar() {
           className={`bg-slate-600 w-64 text-white px-2 py-4 inset-y-0 space-y-6 rounded-2xl `}
         >
           <div className="flex">
-            <div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Dosya Bilgileri</span>
+            <div className="hover:cursor-pointer">
+              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
+               < AiOutlineFileSearch />
+                <span className="text-white">Dosya Bilgileri</span>     
               </div>
+              
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dat Raporu</span>
-              </div>
+              </div> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Sigorta</span>
@@ -59,34 +61,48 @@ function Sidebar() {
         >
           <div className="flex">
             <div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
+            <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}> 
+              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dosya Bilgileri</span>
               </div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
+              </Link>
+              <Link to={`/detail/dat-raporu/${demage._id}`}  state={demage}> 
+              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dat Raporu</span>
               </div>
+              </Link>
+              <Link to={`/detail/sigorta-birimi/${demage._id}`}  state={demage}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Sigorta</span>
               </div>
+              </Link>
+              <Link to={`/detail/tahkim-birimi/${demage._id}`}  state={demage}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Tahkim</span>
               </div>
+              </Link>
+              <Link to={`/detail/eksper-birimi/${demage._id}`}  state={demage}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Eksper</span>
               </div>
+              </Link>
+              <Link to={`/detail/on-odeme-birimi/${demage._id}`}  state={demage}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Ön Ödeme</span>
               </div>
+              </Link>
+              <Link to={`/detail/odeme-birimi/${demage._id}`}  state={demage}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Ödeme</span>
               </div>
+              </Link>
             </div>
           </div>
         </div>

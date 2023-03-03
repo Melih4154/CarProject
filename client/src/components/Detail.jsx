@@ -1,63 +1,60 @@
-import React from "react";
-import { useLocation } from "react-router-dom";
-import Column from "../components/Column";
-import Navbar from "../components/navbar";
-import Sidebar from "../components/Sidebar";
+import React from "react"; 
+import Column from "../components/Column"; 
 import moment from "moment";
 
-function Detail() {
-  const location = useLocation();
-  const demageData = location.state;
+function Detail({data}) { 
 
-  let crashDate = moment(demageData.crash_date).format("DD.MM.YYYY");
-  let createdAt = moment(demageData.createdAt).format("DD.MM.YYYY");
+  let crashDate = moment(data.crash_date).format("DD.MM.YYYY");
+  let createdAt = moment(data.createdAt).format("DD.MM.YYYY");
 
-  return (
-    <div className="w-full flex">
-      <Sidebar />
-      <div className="w-full">
-        <Navbar />
+  return (  
         <div className="w-full py-4 pl-4 pr-16 ">
           <Column
             head={"Dosya No"}
-            data={demageData.file_number}
+            data={data.file_number}
             secondHead={"Kaza Tarihi"}
             secondData={crashDate}
           />
           <Column
             head={"İsim"}
-            data={demageData.full_name}
+            data={data.full_name}
             secondHead={"Plaka"}
-            secondData={demageData.number_plate}
+            secondData={data.number_plate}
           />
           <Column
             head={"TC/Vergi No"}
-            data={demageData.id_number}
+            data={data.id_number}
             secondHead={"Açıklama"}
-            secondData={demageData.explanation}
+            secondData={data.explanation}
           />
           <Column
             head={"Kayıt Tarihi"}
             data={createdAt}
             secondHead={"Dosya Durum"}
-            secondData={demageData.status}
+            secondData={data.status}
           />
           <Column
             head={"Dosya Konusu"}
-            data={demageData.subject}
+            data={data.subject}
             secondHead={"Tahkim Esas No"}
-            secondData={demageData.arbitration_number}
+            secondData={data.arbitration_number}
           />
           <Column
             head={"Saha Personel"}
-            data={demageData.personel.full_name}
+            data={data.personel.full_name}
             secondHead={"Usta/Acente"}
-            secondData={demageData.expert}
+            secondData={data.expert}
           />
-        </div>
-      </div>
+        </div>  
 
-      {/* <div className="flex">
+      
+  );
+}
+
+export default Detail;
+
+
+{/* <div className="flex">
                 <Sidebar />
                 <div className='w-full py-4 pl-4 pr-16 '>
                     <Column head={"Dosya No"}  data={demageData.file_number} secondHead={"Kaza Tarihi"} secondData={crashDate}/>
@@ -71,9 +68,4 @@ function Detail() {
                 <div className='w-full py-4 pl-4 pr-16 lg:hidden'>
                     
                 </div>
-            </div> */}
-    </div>
-  );
-}
-
-export default Detail;
+            </div> */} 

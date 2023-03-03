@@ -14,15 +14,33 @@ class DocumentController {
         .send({ error: "Önce döküman seçiniz." });
     }
 
+
+    
     const extension = path.extname(req.files.document.name);
     const title = req.body.title.replace(" ", "");
     const fileName = req.params.demage_id + "-" + title + extension;
-    const folderPath = path.join(
-      __dirname,
-      "../",
-      `/uploads/${req.params.status}`,
-      fileName
-    );
+    let folderPath;
+
+    if (extension === ".pdf") {
+      req.body.type = "documents";
+      folderPath = path.join(
+        __dirname,
+        "../",
+        `/uploads/${req.params.status}/documents`,
+        fileName
+      );
+    }else{
+      
+      req.body.type = "images"
+      folderPath = path.join(
+        __dirname,
+        "../",
+        `/uploads/${req.params.status}/images`,
+        fileName
+      );
+    }
+
+     
 
     req?.files?.document.mv(folderPath, function (err) {
       if (err) {
@@ -30,6 +48,8 @@ class DocumentController {
           .status(httpStatus.INTERNAL_SERVER_ERROR)
           .send({ error: err });
       }
+
+      req.body.file_name = fileName;
 
       return DocumentService.create(req.body)
         .then((document) => {
@@ -41,6 +61,16 @@ class DocumentController {
             .send({ error: "Dosya yükleme işlemi sırasında bir hata oluştu." })
         );
     });
+  }
+
+  getAll(req,res){
+    DocumentService.getAll({ status: req.params.status, demage_id: req.params.demage_id })
+    .then((document) => res.status(httpStatus.OK).send(document))
+    .catch((e) =>
+      res
+        .status(httpStatus.INTERNAL_SERVER_ERROR)
+        .send({ error: "bir hata oluştu..." })
+    );
   }
 }
 

@@ -258,7 +258,7 @@ const TableComponent = ({ data }) => {
                 </td>
                 <td className="p-3 text-sm text-gray-700 whitespace-nowrap group-hover:bg-blue-50 group-hover:text-blue-600">
                   <div className="flex gap-x-2.5">
-                    <Link to={`/demage/${item._id}`} state={item}>
+                    <Link to={`detail/dosya-bilgileri/${item._id}`} state={item}>
                       <div className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white">
                         Detay
                       </div>
@@ -308,8 +308,7 @@ const TableComponent = ({ data }) => {
                 <span>{item.status}</span>
               </div>
               <div className="flex gap-x-2.5">
-                <Link to={`/demage/${item._id}`} state={item}>
-                  {" "}
+                <Link to={`/demage/${item._id}`} state={item}> 
                   <div className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white">
                     Detay
                   </div>

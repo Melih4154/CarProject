@@ -14,11 +14,11 @@ router.route("/:status/:demage_id").post(
   DocumentController.create
 );
 
-// router.route("/").get(
-//  // authenticateToken,
-//   //[authenticateToken, isUser],
-//   DemageController.getAll
-// );
+router.route("/:status/:demage_id").get(
+  authenticateToken,
+  //[authenticateToken, isUser],
+  DocumentController.getAll
+);
 
 // router.route("/:demage_id").get(
 //   //[authenticateToken, isCompany],

@@ -7,11 +7,7 @@ const API_URL = "http://localhost:3000/v1/";
 const getAll = (status, demage_id) => {
   return axios
     .get(
-      API_URL + "document",
-      {
-        status,
-        demage_id,
-      },
+      API_URL + `document/${status}/${demage_id}`,
       { headers: authHeader() }
     )
     .then((response) => {
