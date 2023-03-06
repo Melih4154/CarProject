@@ -3,12 +3,11 @@ import { useLocation } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar"; 
 import Detail from "../components/Detail";
-import FileDetail from "./FileDetail";
+import FileDetail from "./FileDetail"; 
 
-function DemageDetail({query}) {
+function DemageDetail() {
   const location = useLocation();
   const demageData = location.state;
-   
 
   return (
     <div className="w-full flex">
@@ -17,7 +16,7 @@ function DemageDetail({query}) {
         <Navbar />
         <Detail data={demageData}/>
         
-        <FileDetail status={query} demage_id={demageData._id}/>
+        <FileDetail demage_id={demageData._id}/>
       </div>
 
       {/* <div className="flex">

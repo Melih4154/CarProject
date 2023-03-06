@@ -4,10 +4,15 @@ import {
   AiOutlineFileSearch,
   AiOutlineMenuUnfold,
 } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
+import { changeQuery  } from "../redux/documentSlice";
+
 function Sidebar({demage}) {
-  const [showSidebar, setshowSidebar] = useState(false);
+  const [showSidebar, setshowSidebar] = useState(false); 
+
+  const dispatch= useDispatch();
 
   return (
     <div className="flex min-h-screen py-3 px-3 ">
@@ -61,43 +66,43 @@ function Sidebar({demage}) {
         >
           <div className="flex">
             <div>
-            <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}> 
+            <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}  onClick={()=> dispatch(changeQuery("dosya-bilgileri"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dosya Bilgileri</span>
               </div>
               </Link>
-              <Link to={`/detail/dat-raporu/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/dat-raporu/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("dat-raporu"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dat Raporu</span>
               </div>
               </Link>
-              <Link to={`/detail/sigorta-birimi/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/sigorta-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("sigorta-birimi"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Sigorta</span>
               </div>
               </Link>
-              <Link to={`/detail/tahkim-birimi/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/tahkim-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("tahkim-birimi"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Tahkim</span>
               </div>
               </Link>
-              <Link to={`/detail/eksper-birimi/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/eksper-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("eksper-birimi"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Eksper</span>
               </div>
               </Link>
-              <Link to={`/detail/on-odeme-birimi/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/on-odeme-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("on-odeme-birimi"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Ön Ödeme</span>
               </div>
               </Link>
-              <Link to={`/detail/odeme-birimi/${demage._id}`}  state={demage}> 
+              <Link to={`/detail/odeme-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("odeme-birimi"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Ödeme</span>

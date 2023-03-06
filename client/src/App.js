@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import DemageDetail from "./pages/DemageDetail.jsx";
+import DemageDetail from "./pages/DemageDetail.jsx"; 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 
@@ -25,13 +25,13 @@ function App() {
             </Route> */}
           </Route>
           <Route  path='login' element={<Login />} />
-          <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail query={"dosya-bilgileri"}/>}/>
-          <Route path="detail/dat-raporu/:demage_id" element={<DemageDetail  query={"dat-raporu"}/>}/>
-          <Route path="detail/sigorta-birimi/:demage_id" element={<DemageDetail  query={"sigorta-birimi"}/>}/>
-          <Route path="detail/tahkim-birimi/:demage_id" element={<DemageDetail  query={"tahkim-birimi"}/>}/>
-          <Route path="detail/eksper-birimi/:demage_id" element={<DemageDetail  query={"eksper-birimi"}/>}/>
-          <Route path="detail/on-odeme-birimi/:demage_id" element={<DemageDetail  query={"on-odeme-birimi"}/>}/>
-          <Route path="detail/odeme-birimi/:demage_id" element={<DemageDetail  query={"odeme-birimi"}/>}/>
+          <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail/>}/>
+          <Route path="detail/dat-raporu/:demage_id" element={<DemageDetail/>}/>
+          <Route path="detail/sigorta-birimi/:demage_id" element={<DemageDetail/>}/>
+          <Route path="detail/tahkim-birimi/:demage_id" element={<DemageDetail />}/>
+          <Route path="detail/eksper-birimi/:demage_id" element={<DemageDetail />}/>
+          <Route path="detail/on-odeme-birimi/:demage_id" element={<DemageDetail />}/>
+          <Route path="detail/odeme-birimi/:demage_id" element={<DemageDetail />}/>  
         </Routes>
       </BrowserRouter>
     </div>

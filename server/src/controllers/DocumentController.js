@@ -6,7 +6,6 @@ const path = require("path");
 class DocumentController {
   create(req, res) {
     req.body.demage_id = req.params.demage_id;
-    req.body.status = req.params.status;
 
     if (!req?.files?.document) {
       return res
@@ -26,7 +25,7 @@ class DocumentController {
       folderPath = path.join(
         __dirname,
         "../",
-        `/uploads/${req.params.status}/documents`,
+        `/uploads/${req.body.status}/documents`,
         fileName
       );
     }else{
@@ -35,7 +34,7 @@ class DocumentController {
       folderPath = path.join(
         __dirname,
         "../",
-        `/uploads/${req.params.status}/images`,
+        `/uploads/${req.body.status}/images`,
         fileName
       );
     }
@@ -65,7 +64,9 @@ class DocumentController {
 
   getAll(req,res){
     DocumentService.getAll({ status: req.params.status, demage_id: req.params.demage_id })
-    .then((document) => res.status(httpStatus.OK).send(document))
+    .then((document) => 
+     res.status(httpStatus.OK).send(document)
+    )
     .catch((e) =>
       res
         .status(httpStatus.INTERNAL_SERVER_ERROR)

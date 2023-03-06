@@ -15,11 +15,16 @@ const getAll = (status, demage_id) => {
     });
 };
 
-const create = (status) => {
+const create = (document, title, status, demage_id) => { 
   return axios
-    .post(API_URL + "document", {
+    .post(API_URL + `document/${demage_id}`,
+     {
+      document,
+      title,
       status,
-    })
+    },
+      { headers: authHeader() }
+    )
     .then((response) => {
       return response.data;
     });

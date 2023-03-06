@@ -7,7 +7,7 @@ const idChecker = require("../middleware/idChecker");
 
 const router = express.Router();
 
-router.route("/:status/:demage_id").post(
+router.route("/:demage_id").post(
   authenticateToken,
   //[authenticateToken, isUser],
   //validate(schemas.createValidation),
