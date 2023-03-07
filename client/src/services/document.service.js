@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import authHeader from "./auth-header";
+import { authHeader,  authAndFileHeader } from "./auth-header";
 
 const API_URL = "http://localhost:3000/v1/";
 
@@ -15,7 +15,7 @@ const getAll = (status, demage_id) => {
     });
 };
 
-const create = (document, title, status, demage_id) => { 
+const create = (document, title, status, demage_id) => {  
   return axios
     .post(API_URL + `document/${demage_id}`,
      {
@@ -23,7 +23,7 @@ const create = (document, title, status, demage_id) => {
       title,
       status,
     },
-      { headers: authHeader() }
+      { headers: authAndFileHeader() }
     )
     .then((response) => {
       return response.data;

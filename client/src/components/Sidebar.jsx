@@ -8,9 +8,12 @@ import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { changeQuery  } from "../redux/documentSlice";
+import { sideBarData } from "../utils/data";
 
 function Sidebar({demage}) {
   const [showSidebar, setshowSidebar] = useState(false); 
+
+  const [side, setSide] = useState(sideBarData);
 
   const dispatch= useDispatch();
 
@@ -66,7 +69,17 @@ function Sidebar({demage}) {
         >
           <div className="flex">
             <div>
-            <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}  onClick={()=> dispatch(changeQuery("dosya-bilgileri"))}> 
+              {  
+             side && side.map((s,key)=> (
+                <Link to={`${s.url}/${demage._id}`}  onClick={()=> dispatch(changeQuery(s.query))}> 
+                <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
+                  {s.icon}
+                  <span className="text-white">{s.title}</span>
+                </div>
+                </Link>
+             ))
+              }
+            {/* <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}  onClick={()=> dispatch(changeQuery("dosya-bilgileri"))}> 
               <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
                 <AiOutlineFileSearch />
                 <span className="text-white">Dosya Bilgileri</span>
@@ -107,7 +120,7 @@ function Sidebar({demage}) {
                 <AiOutlineFileSearch />
                 <span className="text-white">Ödeme</span>
               </div>
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>

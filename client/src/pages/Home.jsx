@@ -44,7 +44,7 @@ const Home = () => {
         //   [demage.file_number, demage.user_id.full_name, demage.user_id.id_number, demage.number_plate, demage.createdAt, demage.crash_date, demage.subject, demage.status,
         //     <Link  to={`/${demage._id}`} state={demage}> <div className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white">Detay</div></Link>]
         // ))}
-        data={demages.data}
+        data={demages.demages}
       />
     );
   }

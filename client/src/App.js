@@ -25,7 +25,7 @@ function App() {
             </Route> */}
           </Route>
           <Route  path='login' element={<Login />} />
-          <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail/>}/>
+          <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail />}/>
           <Route path="detail/dat-raporu/:demage_id" element={<DemageDetail/>}/>
           <Route path="detail/sigorta-birimi/:demage_id" element={<DemageDetail/>}/>
           <Route path="detail/tahkim-birimi/:demage_id" element={<DemageDetail />}/>

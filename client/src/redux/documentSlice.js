@@ -28,7 +28,7 @@ export const fetchDocument = createAsyncThunk(
 export const addDocument = createAsyncThunk(
   "addDocument",
   async ({ document, title, status, demage_id }, thunkAPI) => {
-    try {
+    try { 
       const data = await documentService.create(document, title, status, demage_id);
       return data;
     } catch (error) {
@@ -68,7 +68,7 @@ const documentSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(addDocument.fulfilled, (state, action) => {
-      state.data = action.payload;
+      state.data.push(action.payload);
       state.status = "succeeded";
     });
 

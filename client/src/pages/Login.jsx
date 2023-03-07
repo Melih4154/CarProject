@@ -4,7 +4,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 
 import { login } from "../redux/authSlice";
-import { loginValidation } from "../validations/loginSchema";
+import { loginValidation } from "../validations/loginValidation";
 import { useEffect } from "react";
 import { clearMessage } from "../redux/message";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";

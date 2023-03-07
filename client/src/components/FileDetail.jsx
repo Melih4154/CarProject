@@ -1,26 +1,24 @@
 
-import { Field, Form, Formik, useFormik } from 'formik';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-import { addDocument, fetchDocument } from "../redux/documentSlice";
+import { fetchDocument } from "../redux/documentSlice";
+import FormPage from './FormPage';
 
 export default function FileDetail({ demage_id }) {
 
     const dispatch = useDispatch();
 
-    let navigate = useNavigate();
     const documents = useSelector((state) => state.document);
     const documentStatus = useSelector((state) => state.document.status);
     const status = useSelector((state) => state.document.query);
- 
+
 
 
 
     const [openFile, setOpenFile] = useState(false);
-    const [openImage, setOpenImage] = useState(false);
 
 
     useEffect(() => {
@@ -30,27 +28,9 @@ export default function FileDetail({ demage_id }) {
         }
     }, [demage_id, status, documentStatus, dispatch]);
 
-    
-
-    const formik = useFormik({
-        initialValues: {
-            document: '',
-            title: '', 
-        },
-
-
-        
-        onSubmit: (values) => {   
-
-            dispatch(addDocument(values.document, values.title, status, "64019171f3671bec7a71d733"))
-           
-
-        },
-    });
-
-
     return (
         <>
+
             <div className="w-full flex py-4 pl-4 pr-16 text-2xl font-semibold justify-between text-cyan-700">
                 <div>Evraklar</div>
                 <div className='text-white rounded-lg text-[16px] px-4 py-[2px] bg-green-500 items-center justify-center' onClick={() => setOpenFile(!openFile)}>Ekle</div>
@@ -58,34 +38,7 @@ export default function FileDetail({ demage_id }) {
 
             {
                 openFile &&
-                <div className='w-full pl-4 pr-16'>
-                    <div className='bg-gray-200 py-3'>
-                        <form onSubmit={formik.handleSubmit} encType='multipart/form-data'>
-                            <div>
-                                <label> Name</label>
-                                <input
-                                    type='text'
-                                    name='title'
-                                    onChange={formik.handleChange}
-                                    value={formik.values.title}
-                                />
-                            </div> 
-                            <div>
-                                <label> Upload File</label>
-                                <input
-                                    type='file'
-                                    name='document'  
-                                    onChange={(e) =>
-                                        formik.setFieldValue('document', e.currentTarget.files[0])
-                                    }
-                                />
-                            </div>
-
-                            <button type='submit'>Submit</button>
-                        </form>
-                    </div>
-
-                </div>
+                <FormPage status={status} demage_id={demage_id} />
             }
 
             <div className="grid grid-cols-3 py-4 pl-4 pr-16" >

@@ -5,7 +5,10 @@ const path = require("path");
 
 class DocumentController {
   create(req, res) {
+  
+
     req.body.demage_id = req.params.demage_id;
+  
 
     if (!req?.files?.document) {
       return res
@@ -16,8 +19,9 @@ class DocumentController {
 
     
     const extension = path.extname(req.files.document.name);
-    const title = req.body.title.replace(" ", "");
-    const fileName = req.params.demage_id + "-" + title + extension;
+     
+    const title = req.body.title.replace(" ", ""); 
+    const fileName = req.params.demage_id + "-" + title + extension; 
     let folderPath;
 
     if (extension === ".pdf") {
@@ -29,7 +33,6 @@ class DocumentController {
         fileName
       );
     }else{
-      
       req.body.type = "images"
       folderPath = path.join(
         __dirname,

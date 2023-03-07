@@ -24,9 +24,10 @@ class DemageController {
       );
   }
 
-  getByDemageId(req, res) {
-    DemageService.findOne({ demage_id: req.params.demage_id })
+  getByDemageId(req, res) { 
+    DemageService.findOne({ _id: req.params.demage_id })
       .then((demage) => {
+ 
         res.status(httpStatus.OK).send(demage);
       })
       .catch((e) =>

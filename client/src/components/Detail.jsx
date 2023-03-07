@@ -1,53 +1,89 @@
-import React from "react"; 
-import Column from "../components/Column"; 
+import React from "react";
+import Column from "../components/Column";
 import moment from "moment";
+import { fileData } from "../utils/data";
+import { useSelector } from "react-redux";
 
-function Detail({data}) { 
+function Detail({ data }) {
 
   let crashDate = moment(data.crash_date).format("DD.MM.YYYY");
   let createdAt = moment(data.createdAt).format("DD.MM.YYYY");
 
-  return (  
-        <div className="w-full py-4 pl-4 pr-16 ">
-          <Column
-            head={"Dosya No"}
-            data={data.file_number}
-            secondHead={"Kaza Tarihi"}
-            secondData={crashDate}
-          />
-          <Column
-            head={"İsim"}
-            data={data.full_name}
-            secondHead={"Plaka"}
-            secondData={data.number_plate}
-          />
-          <Column
-            head={"TC/Vergi No"}
-            data={data.id_number}
-            secondHead={"Açıklama"}
-            secondData={data.explanation}
-          />
-          <Column
-            head={"Kayıt Tarihi"}
-            data={createdAt}
-            secondHead={"Dosya Durum"}
-            secondData={data.status}
-          />
-          <Column
-            head={"Dosya Konusu"}
-            data={data.subject}
-            secondHead={"Tahkim Esas No"}
-            secondData={data.arbitration_number}
-          />
-          <Column
-            head={"Saha Personel"}
-            data={data.personel.full_name}
-            secondHead={"Usta/Acente"}
-            secondData={data.expert}
-          />
-        </div>  
 
+  const status = useSelector((state) => state.document.query);
+
+  console.log(status);
+
+
+  return (
+    <div className="w-full py-4 pl-4 pr-16 ">
+      <Column
+        head={"Dosya No"}
+        data={data.file_number}
+        secondHead={"Kaza Tarihi"}
+        secondData={crashDate}
+      />
+      <Column
+        head={"İsim"}
+        data={data.full_name}
+        secondHead={"Plaka"}
+        secondData={data.number_plate}
+      />
+      <Column
+        head={"TC/Vergi No"}
+        data={data.id_number}
+        secondHead={"Açıklama"}
+        secondData={data.explanation}
+      />
+      <Column
+        head={"Kayıt Tarihi"}
+        data={createdAt}
+        secondHead={"Dosya Durum"}
+        secondData={data.status}
+      />
+      <Column
+        head={"Dosya Konusu"}
+        data={data.subject}
+        secondHead={"Tahkim Esas No"}
+        secondData={data.arbitration_number}
+      />
+      <Column
+        head={"Saha Personel"}
+        data={data.personel.full_name}
+        secondHead={"Usta/Acente"}
+        secondData={data.expert}
+      />
+
+      {status === "dat-raporu" && <>
       
+      <div className="w-full py-3 text-xl font-semibold justify-between text-cyan-700">
+          <div>Araç Bilgileri</div>
+          
+        </div>
+      <Column
+            head={"Aracın Markası"}
+            data={data.brand}
+            secondHead={"Model ve Cinsi"}
+            secondData={data.model}
+          />
+          <Column
+            head={"Kullanım Şekli"}
+            data={data.usage}
+            secondHead={"Aracın Tipi"}
+            secondData={data.type}
+          />
+          <Column
+            head={"Motor No"}
+            data={data.engine_number}
+            secondHead={"Şasi No"}
+            secondData={data.chassis_number}
+          />
+      </>
+        
+      }
+    </div>
+
+
   );
 }
 
