@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom"; 
 import DemageDetail from "./pages/DemageDetail.jsx"; 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -24,7 +24,8 @@ function App() {
               <Route path='new' element={<New />} />
             </Route> */}
           </Route>
-          <Route  path='login' element={<Login />} />
+           
+          <Route path='login' element={<Login />} />
           <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail />}/>
           <Route path="detail/dat-raporu/:demage_id" element={<DemageDetail/>}/>
           <Route path="detail/sigorta-birimi/:demage_id" element={<DemageDetail/>}/>

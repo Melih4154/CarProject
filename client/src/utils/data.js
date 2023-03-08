@@ -1,5 +1,9 @@
 
-import { AiOutlineFileSearch } from "react-icons/ai"; 
+import { AiOutlineFileSearch, AiTwotoneBank } from "react-icons/ai"; 
+import { HiOutlineDocumentReport } from "react-icons/hi"; 
+import { BsWallet2, BsCardChecklist } from "react-icons/bs"; 
+import { MdOutlinePayment } from "react-icons/md"; 
+import { RiHomeSmileLine } from "react-icons/ri"; 
 
  
 export const sideBarData = () => [
@@ -12,42 +16,39 @@ export const sideBarData = () => [
     {
         title: "Dat Raporu",
         query: "dat-raporu",
-        icon: < AiOutlineFileSearch />,
+        icon: < HiOutlineDocumentReport />,
         url: `/detail/dat-raporu`
     },
     {
         title: "Sigorta Birimi",
         query: "sigorta-birimi",
-        icon: < AiOutlineFileSearch />,
+        icon: < RiHomeSmileLine />,
         url: `/detail/sigorta-birimi`
     },
     {
         title: "Tahkim Birimi",
         query: "tahkim-birimi",
-        icon: < AiOutlineFileSearch />,
+        icon: < AiTwotoneBank />,
         url: `/detail/tahkim-birimi`
     },
     {
         title: "Eksper Birimi",
         query: "eksper-birimi",
-        icon: < AiOutlineFileSearch />,
+        icon: < BsCardChecklist />,
         url: `/detail/tahkim-birimi`
     },
     {
         title: "Ön Ödeme Birimi",
         oquery: "on-odeme-birimi",
-        icon: < AiOutlineFileSearch />,
+        icon: < BsWallet2 />,
         url: `/detail/on-odeme-birimi`
     },
     {
         title: "Ödeme Birimi",
         query: "odeme-birimi",
-        icon: < AiOutlineFileSearch />,
+        icon: < MdOutlinePayment />,
         url: `/detail/odeme-birimi`
     },
 
 ];
-
-export const carDetail = [
-
-];
+ 

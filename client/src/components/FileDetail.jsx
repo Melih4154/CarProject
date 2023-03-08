@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchDocument } from "../redux/documentSlice";
+import Button from './Button';
 import FormPage from './FormPage';
 
 export default function FileDetail({ demage_id }) {
@@ -30,10 +31,9 @@ export default function FileDetail({ demage_id }) {
 
     return (
         <>
-
             <div className="w-full flex py-4 pl-4 pr-16 text-2xl font-semibold justify-between text-cyan-700">
                 <div>Evraklar</div>
-                <div className='text-white rounded-lg text-[16px] px-4 py-[2px] bg-green-500 items-center justify-center' onClick={() => setOpenFile(!openFile)}>Ekle</div>
+                <Button className={"text-white rounded-lg text-[16px] px-4 py-[2px] bg-green-500 items-center justify-center"} onClick={() => setOpenFile(!openFile)} title={"Döküman Ekle"} />
             </div>
 
             {
@@ -51,15 +51,13 @@ export default function FileDetail({ demage_id }) {
                             {d.status === status && d.type === "documents" && <>
                                 <div className="border col-span-2 border-gray-300 p-2 justify-center">{d.title}</div>
                                 <div className="sm:flex border border-gray-300 p-2 font-semibold text-sm text-white">
-                                    <Link target="brand" to={`http://localhost:3000/uploads/${status}/documents/${d.file_name}`} className="w-full ">
-                                        <div className='bg-green-600 border p-1 border-cyan-200  items-center text-center justify-center rounded-lg'>
-                                            <div className="text-center justify-center text-white text-md">Göster</div>
-                                        </div>
+                                    <Link target="brand" to={`http://localhost:3000/uploads/${status}/documents/${d.file_name}`} >
+                                        <Button
+                                            title={"Göster"} className={"bg-green-600 border p-1 px-10 border-cyan-200  items-center text-center justify-center rounded-lg text-white text-md"} />
                                     </Link>
-                                    <Link target="brand" to={`http://localhost:3000/uploads/${status}/documents/${d.file_name}`} className="w-full">
-                                        <div className='bg-red-600 border p-1 border-cyan-200  items-center text-center justify-center rounded-lg'>
-                                            <div className="text-center justify-center text-white text-md">Sil</div>
-                                        </div>
+                                    <Link target="brand" to={`http://localhost:3000/uploads/${status}/documents/${d.file_name}`}>
+                                        <Button
+                                            title={"Göster"} className={"bg-red-600 border p-1 px-10 border-cyan-200  items-center text-center justify-center rounded-lg text-white text-md"} />
                                     </Link>
                                 </div>
                             </>}
@@ -84,15 +82,13 @@ export default function FileDetail({ demage_id }) {
                                 <>
                                     <div className="border col-span-2 border-gray-300 p-2">{d.title}</div>
                                     <div className="sm:flex border border-gray-300 p-2 font-semibold text-sm text-white">
-                                        <Link target="brand" to={`http://localhost:3000/uploads/${status}/images/${d.file_name}`} className="w-full ">
-                                            <div className='bg-green-600 border p-1 border-cyan-200  items-center text-center justify-center rounded-lg'>
-                                                <div className="text-center justify-center text-white text-md">Göster</div>
-                                            </div>
+                                        <Link target="brand" to={`http://localhost:3000/uploads/${status}/images/${d.file_name}`} >
+                                            <Button
+                                                title={"Göster"} className={"bg-green-600 border p-1 px-10 border-cyan-200  items-center text-center justify-center rounded-lg text-white text-md"} />
                                         </Link>
-                                        <Link target="brand" to={`http://localhost:3000/uploads/${status}/images/${d.file_name}`} className="w-full">
-                                            <div className='bg-red-600 border p-1 border-cyan-200  items-center text-center justify-center rounded-lg'>
-                                                <div className="text-center justify-center text-white text-md">Sil</div>
-                                            </div>
+                                        <Link target="brand" to={`http://localhost:3000/uploads/${status}/images/${d.file_name}`}>
+                                            <Button
+                                                title={"Göster"} className={"bg-red-600 border p-1 px-10 border-cyan-200  items-center text-center justify-center rounded-lg text-white text-md"} />
                                         </Link>
                                     </div>
 

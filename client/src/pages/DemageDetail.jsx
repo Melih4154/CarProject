@@ -1,5 +1,5 @@
 import React from "react";
-import { useLocation, useParams } from "react-router-dom"; 
+import { useParams } from "react-router-dom"; 
 import Navbar from "../components/Navbar";
 import Sidebar from "../components/Sidebar"; 
 import Detail from "../components/Detail";

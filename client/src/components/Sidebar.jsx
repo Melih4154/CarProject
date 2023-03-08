@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {
-  AiOutlineClose,
-  AiOutlineFileSearch,
+  AiOutlineClose, 
   AiOutlineMenuUnfold,
 } from "react-icons/ai";
 import { useDispatch } from "react-redux";
@@ -25,38 +24,19 @@ function Sidebar({demage}) {
         >
           <div className="flex">
             <div className="hover:cursor-pointer">
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-               < AiOutlineFileSearch />
-                <span className="text-white">Dosya Bilgileri</span>     
-              </div>
-              
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Dat Raporu</span>
-              </div> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Sigorta</span>
-              </div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Tahkim</span>
-              </div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Eksper</span>
-              </div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Ön Ödeme</span>
-              </div>
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Ödeme</span>
-              </div>
+            {  
+             side && side.map((s,key)=> (
+                <Link to={`${s.url}/${demage._id}`}  onClick={()=> dispatch(changeQuery(s.query))}> 
+                <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
+                  {s.icon}
+                  <span className="text-white">{s.title}</span>
+                </div>
+                </Link>
+             ))
+              } 
             </div>
             <div
-              className="flex lg:hidden w-8 h-8 translate-x-12 border border-gray-400 rounded items-center justify-center"
+              className="flex lg:hidden w-8 h-8 translate-x-5 border border-gray-400 rounded items-center justify-center"
               onClick={() => setshowSidebar(false)}
             >
               <AiOutlineClose className=" text-xl" />
@@ -79,48 +59,7 @@ function Sidebar({demage}) {
                 </Link>
              ))
               }
-            {/* <Link to={`/detail/dosya-bilgileri/${demage._id}`}  state={demage}  onClick={()=> dispatch(changeQuery("dosya-bilgileri"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Dosya Bilgileri</span>
-              </div>
-              </Link>
-              <Link to={`/detail/dat-raporu/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("dat-raporu"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:cursor-pointer hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Dat Raporu</span>
-              </div>
-              </Link>
-              <Link to={`/detail/sigorta-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("sigorta-birimi"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Sigorta</span>
-              </div>
-              </Link>
-              <Link to={`/detail/tahkim-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("tahkim-birimi"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Tahkim</span>
-              </div>
-              </Link>
-              <Link to={`/detail/eksper-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("eksper-birimi"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Eksper</span>
-              </div>
-              </Link>
-              <Link to={`/detail/on-odeme-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("on-odeme-birimi"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Ön Ödeme</span>
-              </div>
-              </Link>
-              <Link to={`/detail/odeme-birimi/${demage._id}`}  state={demage} onClick={()=> dispatch(changeQuery("odeme-birimi"))}> 
-              <div className="group flex items-center py-3 space-x-2 px-4 rounded hover:bg-slate-700 hover:text-yellow-50 transition duration-200 ">
-                <AiOutlineFileSearch />
-                <span className="text-white">Ödeme</span>
-              </div>
-              </Link> */}
+            
             </div>
           </div>
         </div>

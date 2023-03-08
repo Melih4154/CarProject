@@ -3,7 +3,7 @@ import {  Navigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchDemage } from "../redux/demageSlice";
 import Navbar from "../components/Navbar";
-import TableComponent from "../components/Table";
+import Table from "../components/Table";
 
 const Home = () => {
   const { user: currentUser } = useSelector((state) => state.auth);
@@ -28,7 +28,7 @@ const Home = () => {
     content = <div>Loading</div>;
   } else if (demagesStatus === "succeeded") {
     content = (
-      <TableComponent
+      <Table
         // head={[
         //   { name: 'D.No', sortable: true },
         //   { name: 'İsim Soyisim' },

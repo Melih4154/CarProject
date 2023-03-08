@@ -3,7 +3,7 @@ import React from 'react'
 import { addDocument } from '../redux/documentSlice';
 import { documentValidation } from '../validations/documentValidation';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'; 
 
 export default function FormPage({ status, demage_id }) {
 
@@ -63,7 +63,7 @@ export default function FormPage({ status, demage_id }) {
                     />
                   </span>
                 </div>
-                <div className="col-span-1">
+                <div className="col-span-1"> 
                   <button
                     type="submit"
                     className="bg-[#002D74] rounded-xl text-white py-1 px-10 hover:scale-105 duration-300"
