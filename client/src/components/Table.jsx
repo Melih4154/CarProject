@@ -111,7 +111,7 @@
 
 
 import React, { useState } from 'react'
-import { Form, Formik } from "formik";
+import { Field, Form, Formik } from "formik";
 import moment from "moment";
 import { FaSortDown, FaSortUp } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -199,30 +199,55 @@ export default function Table({ data }) {
 
               <Form className="px-2 justify-center">
                 <div className='space-y-2 items-center text-center justify-center'>
-                  <div className='flex justify-evenly gap-2'>
-                    <FormComponent name="file_number" placeholder="Dosya No" type="text" />
-                    <FormComponent name="full_name" placeholder="İsim-Soyisim" type="text" />
-                    <FormComponent name="id_number" placeholder="T.C./Vergi No" type="text" />
-                    <FormComponent name="subject" placeholder="Dosya Konusu" type="text" />
-                  </div>
-                  <div className='flex justify-evenly gap-2'>
-                    <FormComponent name="status" placeholder="Dosya Durum" type="text" />
-                    <FormComponent name="arbitration_number" placeholder="Tahkim Esas No" type="text" />
-                    <FormComponent name="personel" placeholder="Saha Personel" as="select" />
-                    <FormComponent name="number_plate" placeholder="Plaka" type="text" />
-                  </div>
-                  <div className='flex justify-evenly gap-2'>
-                    <FormComponent name="crash_date" placeholder="Kaza Tarihi" type="text" />
-                    <FormComponent name="explanation" placeholder="Açıklama" type="text" />
-                    <FormComponent name="expert" placeholder="Usta/Acente" type="text" />
-                    <FormComponent name="brand" placeholder="Aracın Markası" type="text" />
-                  </div>
-                  <div className='flex justify-evenly gap-2'>
+                  <div className='grid grid-cols-4 gap-2'>
+                    <div className=''>
+                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+                    </div>
+                    <div className=''>
+                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+                    </div>
+                    <div className=''>
+                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+                    </div>
+                    <div className=''>
+                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="status" placeholder="Dosya Durum" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="arbitration_number" placeholder="Tahkim Esas No" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="personel" as="select" />
+                    </div>
+                    <div>
+                      <FormComponent name="number_plate" placeholder="Plaka" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="crash_date" placeholder="Kaza Tarihi" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="explanation" placeholder="Açıklama" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="expert" placeholder="Usta/Acente" type="text" />
+                    </div>
+                    <div>
+                      <FormComponent name="brand" placeholder="Aracın Markası" type="text" />
+                    </div>
+                    <div>
                     <FormComponent name="usage" placeholder="Kullanım Şekli" type="text" />
+                    </div>
+                    <div>
                     <FormComponent name="engine_number" placeholder="Motor No" type="text" />
-                    <FormComponent name="type" placeholder="Aracın Tipi" type="text" />
+                    </div>
+                    <div>
+                    <FormComponent name="type" placeholder="Aracın Tipi" type="text" /></div>
+                    <div>
                     <FormComponent name="chassis_number" placeholder="Şasi No" type="text" />
-                  </div>
+                    </div>
+                  </div> 
                   <div className='py-3'>
                     <button
                       type="submit"
