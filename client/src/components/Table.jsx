@@ -200,54 +200,50 @@ export default function Table({ data }) {
               <Form className="px-2 justify-center">
                 <div className='space-y-2 items-center text-center justify-center'>
                   <div className='grid grid-cols-4 gap-2'>
-                    <div className=''>
-                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
-                    </div>
-                    <div className=''>
-                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
-                    </div>
-                    <div className=''>
-                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
-                    </div>
-                    <div className=''>
-                      <FormComponent name="file_number" placeholder="Dosya No" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="status" placeholder="Dosya Durum" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="arbitration_number" placeholder="Tahkim Esas No" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="personel" as="select" />
-                    </div>
-                    <div>
-                      <FormComponent name="number_plate" placeholder="Plaka" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="crash_date" placeholder="Kaza Tarihi" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="explanation" placeholder="Açıklama" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="expert" placeholder="Usta/Acente" type="text" />
-                    </div>
-                    <div>
-                      <FormComponent name="brand" placeholder="Aracın Markası" type="text" />
-                    </div>
-                    <div>
+                    <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+
+                    <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+
+
+                    <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+
+
+                    <FormComponent name="file_number" placeholder="Dosya No" type="text" />
+
+
+                    <FormComponent name="status" placeholder="Dosya Durum" type="text" />
+
+
+                    <FormComponent name="arbitration_number" placeholder="Tahkim Esas No" type="text" />
+
+                    <FormComponent name="personel" as="select" />
+
+                    <FormComponent name="number_plate" placeholder="Plaka" type="text" />
+
+
+                    <FormComponent name="crash_date" placeholder="Kaza Tarihi" type="text" />
+
+
+                    <FormComponent name="explanation" placeholder="Açıklama" type="text" />
+
+
+                    <FormComponent name="expert" placeholder="Usta/Acente" type="text" />
+
+
+                    <FormComponent name="brand" placeholder="Aracın Markası" type="text" />
+
+
                     <FormComponent name="usage" placeholder="Kullanım Şekli" type="text" />
-                    </div>
-                    <div>
+
+
                     <FormComponent name="engine_number" placeholder="Motor No" type="text" />
-                    </div>
-                    <div>
-                    <FormComponent name="type" placeholder="Aracın Tipi" type="text" /></div>
-                    <div>
+
+
+                    <FormComponent name="type" placeholder="Aracın Tipi" type="text" />
+
                     <FormComponent name="chassis_number" placeholder="Şasi No" type="text" />
-                    </div>
-                  </div> 
+
+                  </div>
                   <div className='py-3'>
                     <button
                       type="submit"
@@ -256,7 +252,6 @@ export default function Table({ data }) {
                       <span>Ekle</span>
                     </button>
                   </div>
-
                 </div>
               </Form>
             </Formik>
