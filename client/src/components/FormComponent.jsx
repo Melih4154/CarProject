@@ -4,14 +4,9 @@ import React from 'react'
 export default function FormComponent({ name, placeholder, type, as }) {
 
 
-  //   };
   return (
 
-    <div>
-      {as === "select" ? 
-      <Field as="select" name={name} className="py-1 w-full rounded-xl focus:outline-none" placeholder="Kullanıcı Seçiniz">
-        <option disabled value="">(Select a player 1)</option>
-      </Field> : <>
+    <div> 
         <Field
           name={name}
           placeholder={placeholder}
@@ -24,7 +19,7 @@ export default function FormComponent({ name, placeholder, type, as }) {
             component="div"
             className="text-red-400 text-sm"
           />
-        </span> </>}
+        </span>
     </div>
 
   )

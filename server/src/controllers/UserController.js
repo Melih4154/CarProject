@@ -26,6 +26,10 @@ class UserController {
       );
   }
 
+  getAllUser(req, res) {
+    UserService.getAll().then(user => res.status(httpStatus.OK).send(user)).catch(e => res.status(httpStatus.INTERNAL_SERVER_ERROR).send({ error: "Bir hata oluştu." }))
+  }
+
   profileUpdate(req, res) {
     UserService.findOne({ _id: req.user?._id }).then((user) => {
       if (user.__t == "company") {

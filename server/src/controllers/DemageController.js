@@ -2,7 +2,7 @@ const httpStatus = require("http-status");
 const DemageService = require("../services/Demage/DemageService");
 
 class DemageController {
-  create(req, res) {
+  create(req, res) { 
     DemageService.create(req.body)
       .then((demage) => res.status(httpStatus.CREATED).send(demage))
       .catch((e) =>

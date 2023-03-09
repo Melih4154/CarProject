@@ -5,7 +5,7 @@ import { setMessage } from "./message";
 const initialState = {
   demages: [],
   status: "idle",
-  
+   
   demageStatus: "idle",
   demage:{}
 };
@@ -27,6 +27,22 @@ export const fetchDemage = createAsyncThunk("fetchDemage", async (thunkAPI) => {
 export const fetchDemageById = createAsyncThunk("fetchDemageById", async (id,thunkAPI) => {
   try {
     const data = await demageService.findOne(id);  
+    return data;
+  } catch (error) {
+    const message =
+      (error.response && error.response.data && error.response.data.error) ||
+      error.message ||
+      error.toString();
+    thunkAPI.dispatch(setMessage(message));
+    return thunkAPI.rejectWithValue();
+  }
+});
+
+export const addDemage = createAsyncThunk("addDemage", async ({file_number, full_name, id_number, subject, status, arbitration_number, personel,
+  number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number},thunkAPI) => {
+  try {
+    const data = await demageService.create({file_number, full_name, id_number, subject, status, arbitration_number, personel,
+      number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number});  
     return data;
   } catch (error) {
     const message =
@@ -65,6 +81,18 @@ const demageSlice = createSlice({
     });
     builder.addCase(fetchDemageById.rejected, (state, action) => {
       state.demageStatus = "failed";
+    });
+
+    //addDemage
+    builder.addCase(addDemage.pending, (state, action) => { 
+      state.status = "loading";
+    });
+    builder.addCase(addDemage.fulfilled, (state, action) => {  
+      state.demages.push(action.payload);
+      state.status = "succeeded";
+    });
+    builder.addCase(addDemage.rejected, (state, action) => {
+      state.status = "failed";
     });
   },
 });

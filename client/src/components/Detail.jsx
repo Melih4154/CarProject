@@ -11,8 +11,7 @@ function Detail({ data }) {
 
 
   const status = useSelector((state) => state.document.query);
-
-  console.log(status);
+ 
 
 
   return (

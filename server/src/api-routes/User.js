@@ -12,6 +12,9 @@ const idChecker = require("../middleware/idChecker");
 const router = express.Router();
 
 router.route("/").get(authenticateToken, UserController.getProfile);
+
+router.route("/getAll").get(authenticateToken, UserController.getAllUser);
+
 router
   .route("/")
   .patch(
