@@ -1,11 +1,13 @@
-import { ErrorMessage, Field, Form, Formik } from 'formik'
+import { Form, Formik } from 'formik'
 import React from 'react' 
-import { addDocument } from '../redux/documentSlice';
-import { documentValidation } from '../validations/documentValidation';
+import { addDocument } from '../../redux/documentSlice';
+import { documentValidation } from '../../validations/documentValidation';
 
 import { useDispatch } from 'react-redux'; 
+import FormikControl from './FormikControl';
+import CustomDocument from './CustomDocument';
 
-export default function FormPage({ status, demage_id }) {
+export default function DocumentForm({ status, demage_id }) {
 
  
   const dispatch = useDispatch();
@@ -34,34 +36,15 @@ export default function FormPage({ status, demage_id }) {
             <Form className="px-2 justify-center">
               <div className="grid-cols-1 grid md:grid-cols-6 gap-4">
                 <div className="col-span-2">
-                  <Field
+                  <FormikControl 
                     name="title"
                     placeholder="Başlık"
-                    type="text"
+                    control= "input"
                     className="py-1 px-2 rounded-xl focus:outline-none"
-                  />
-                  <span className="py-2">
-                    <ErrorMessage
-                      name="title"
-                      component="div"
-                      className="text-red-400 text-sm"
-                    />
-                  </span>
+                    />  
                 </div>
                 <div className="col-span-2">
-                  <input
-                    name="document"
-                    type="file"
-                    onChange={(event) => setFieldValue("document", event.target.files[0])}
-                    className="w-full"
-                  />
-                  <span className="py-2">
-                    <ErrorMessage
-                      name="document"
-                      component="div"
-                      className="text-red-400 text-sm"
-                    />
-                  </span>
+                  <CustomDocument name="document" onChange={(event) => setFieldValue("document", event.target.files[0])}/>
                 </div>
                 <div className="col-span-1"> 
                   <button

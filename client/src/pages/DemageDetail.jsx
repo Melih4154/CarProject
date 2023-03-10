@@ -8,9 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { fetchDemageById } from "../redux/demageSlice";
 
-function DemageDetail() {
-  // const location = useLocation();
-  // const demageData = location.state;
+function DemageDetail() { 
  const params = useParams(); 
 
   const dispatch = useDispatch();
@@ -29,26 +27,9 @@ function DemageDetail() {
       <Sidebar demage={demage.demage}/>
       <div className="w-full">
         <Navbar />
-        <Detail data={demage.demage}/>
-        
+        <Detail data={demage.demage}/> 
         <FileDetail demage_id={demage.demage._id}/>
       </div>
-
-      {/* <div className="flex">
-                <Sidebar />
-                <div className='w-full py-4 pl-4 pr-16 '>
-                    <Column head={"Dosya No"}  data={demageData.file_number} secondHead={"Kaza Tarihi"} secondData={crashDate}/>
-                    <Column head={"İsim"}  data={demageData.user_id.full_name} secondHead={"Plaka"} secondData={demageData.number_plate}/>
-                    <Column head={"TC/Vergi No"}  data={demageData.user_id.id_number} secondHead={"Açıklama"} secondData={demageData.explanation}/>
-                    <Column head={"Kayıt Tarihi"}  data={createdAt} secondHead={"Dosya Durum"} secondData={demageData.status}/>
-                    <Column head={"Dosya Konusu"}  data={demageData.subject} secondHead={"Tahkim Esas No"} secondData={demageData.arbitration_number}/>
-                    <Column head={"Saha Personel"}  data={demageData.personel.user_name} secondHead={"Usta/Acente"} secondData={demageData.expert}/> 
-                </div>
-
-                <div className='w-full py-4 pl-4 pr-16 lg:hidden'>
-                    
-                </div>
-            </div> */}
     </div>
   );
 }

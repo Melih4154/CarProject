@@ -1,12 +1,13 @@
 
 import React, { useEffect } from 'react'
 import { useState } from 'react';
+import { AiOutlineClose } from 'react-icons/ai';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchDocument } from "../redux/documentSlice";
 import Button from './Button';
-import FormPage from './FormPage';
+import DocumentForm from './Forms/DocumentForm';
 
 export default function FileDetail({ demage_id }) {
 
@@ -16,11 +17,7 @@ export default function FileDetail({ demage_id }) {
     const documentStatus = useSelector((state) => state.document.status);
     const status = useSelector((state) => state.document.query);
 
-
-
-
     const [openFile, setOpenFile] = useState(false);
-
 
     useEffect(() => {
 
@@ -33,12 +30,16 @@ export default function FileDetail({ demage_id }) {
         <>
             <div className="w-full flex py-4 pl-4 pr-16 text-2xl font-semibold justify-between text-cyan-700">
                 <div>Evraklar</div>
-                <Button className={"text-white rounded-lg text-[16px] px-4 py-[2px] bg-green-500 items-center justify-center"} onClick={() => setOpenFile(!openFile)} title={"Döküman Ekle"} />
+                {
+                    openFile ? <div className='w-8 h-8 rounded justify-center cursor-pointer bg-gray-300 items-center'>
+                        <AiOutlineClose className='text-md text-white w-full mt-1' onClick={() => setOpenFile(false)} />
+                    </div> :
+                        <Button className={"text-white cursor-pointer rounded-lg text-[16px] px-4 py-[2px] bg-green-500 items-center justify-center"} onClick={() => setOpenFile(true)} title={"Döküman Ekle"} />}
             </div>
 
             {
                 openFile &&
-                <FormPage status={status} demage_id={demage_id} />
+                <DocumentForm status={status} demage_id={demage_id} />
             }
 
             <div className="grid grid-cols-3 py-4 pl-4 pr-16" >

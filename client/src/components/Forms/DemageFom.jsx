@@ -1,10 +1,13 @@
+import { useMediaQuery } from '@react-hook/media-query';
 import { Formik,Form } from 'formik'
 import React from 'react'
 import { useDispatch } from 'react-redux'; 
-import { addDemage } from '../redux/demageSlice';
+import { addDemage } from '../../redux/demageSlice';
 import FormikControl from './FormikControl'
 
 export default function DemageFom(props) {
+  const mdSize = useMediaQuery('(max-width: 945px)');
+  const smSize = useMediaQuery('(max-width: 639px)');
     const {usersData} = props
     const dispatch =useDispatch();
 
@@ -20,8 +23,7 @@ export default function DemageFom(props) {
           dispatch(addDemage({file_number, full_name, id_number, subject, status, arbitration_number, personel,
             number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number})); 
     
-      };
-
+      }; 
   return (
     <div className='w-full py-3'>
           <div className='bg-gray-200 py-3 rounded-lg'>
@@ -31,9 +33,10 @@ export default function DemageFom(props) {
               onSubmit={handleLogin}
             >
               {({ setFieldValue }) => (
+                
                 <Form className="px-2 justify-center">
                   <div className='space-y-2 items-center text-center justify-center'>
-                    <div className='grid grid-cols-4 gap-2'>
+                    <div className={`grid  ${smSize ? 'grid-cols-1' : mdSize ? 'grid-cols-2' : 'grid-cols-4'} gap-2`}>
                       <FormikControl name="file_number" placeholder="Dosya No" type="text" control='input' />
                       <FormikControl name="full_name" placeholder="İsim Soyisim" type="text" control='input' />
                       <FormikControl name="id_number" placeholder="T.C.No/Vergi No" type="text" control='input' />
@@ -62,9 +65,7 @@ export default function DemageFom(props) {
                   </div>
                 </Form>
               )}
-
             </Formik>
-
           </div>
         </div>
   )

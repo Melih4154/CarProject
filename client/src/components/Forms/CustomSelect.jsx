@@ -1,6 +1,6 @@
 import { ErrorMessage, Field } from 'formik'
 import React from 'react'
-import TextError from './TextError';
+import TextError from '../TextError';
 
 export default function CustomSelect(props) {
   const { name, options, ...rest } = props
