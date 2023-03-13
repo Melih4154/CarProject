@@ -88,6 +88,8 @@ const Home = () => {
     content = <div>Loading</div>;
   } else if (demagesStatus === "succeeded") {
     content = (
+      demageList.length <1 ? <div className="p-4 rounded bg-yellow-100 text-yellow-700 text-sm">Gösterilecek veri bulunmuyor.</div> :
+
       <Table
         data={demageList}
         sortById={sortById}
@@ -95,7 +97,7 @@ const Home = () => {
         sorted={sorted}
       />
     );
-  }
+  } 
 
   return (
     <div className="w-full">

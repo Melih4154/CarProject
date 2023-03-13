@@ -4,7 +4,7 @@ import { setMessage } from "./message";
 
 const initialState = {
   demages: [],
-  status: "idle",
+  status: "idle", 
    
   demageStatus: "idle",
   demage:{}
@@ -63,7 +63,7 @@ const demageSlice = createSlice({
     builder.addCase(fetchDemage.pending, (state, action) => {
       state.status = "loading";
     });
-    builder.addCase(fetchDemage.fulfilled, (state, action) => {
+    builder.addCase(fetchDemage.fulfilled, (state, action) => { 
       state.demages = action.payload;
       state.status = "succeeded";
     });
@@ -88,7 +88,7 @@ const demageSlice = createSlice({
       state.status = "loading";
     });
     builder.addCase(addDemage.fulfilled, (state, action) => {  
-      state.demages.push(action.payload);
+      state.demages.push(action.payload); 
       state.status = "succeeded";
     });
     builder.addCase(addDemage.rejected, (state, action) => {

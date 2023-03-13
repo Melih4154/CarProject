@@ -19,10 +19,10 @@ export default function Table(props) {
           <table className="w-full">
             <thead className="bg-gray-600 border-b-2 text-white border-gray-200 w-full">
               <tr>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-24 font-semibold text-left">
                   <div className="flex space-x-1">
                     <span className="inline-flex items-center gap-x-2">
-                      Dosya No
+                      D. No
                     </span>
                     <span onClick={sortById}>
                       {sorted.sorted === "id" && sorted.reversed ? (
@@ -33,7 +33,7 @@ export default function Table(props) {
                     </span>
                   </div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left ">
+                <th className="p-3 text-sm tracking-wide w-[450px] font-semibold text-left ">
                   <div className="flex space-x-1">
                     <span className="inline-flex items-center gap-x-2">
                       İsim Soyisim
@@ -47,28 +47,28 @@ export default function Table(props) {
                     </span>
                   </div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-36 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">T.C.No</div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-36 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">Plaka</div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-36 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">
                     Kayıt Tarihi
                   </div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-36 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">
                     Kaza Tarihi
                   </div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide  w-44 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">
                     Dosya Konusu
                   </div>
                 </th>
-                <th className="p-3 text-sm tracking-wide font-semibold text-left">
+                <th className="p-3 text-sm tracking-wide w-44 font-semibold text-left">
                   <div className="inline-flex items-center gap-x-2">Durum</div>
                 </th>
                 <th className="p-3 text-sm tracking-wide font-semibold text-left">
@@ -112,7 +112,11 @@ export default function Table(props) {
                       <Link to={`detail/dosya-bilgileri/${item._id}`} state={item}>
                         <Button title={"Detay"} className="h-8 px-4 flex items-center justify-center rounded bg-green-600 text-white" />
                       </Link>
+                      <Link to={`detail/dosya-bilgileri/${item._id}`} state={item}>
+                        <Button title={"Güncelle"} className="h-8 px-4 flex items-center justify-center rounded bg-cyan-600 text-white" />
+                      </Link>
                     </div>
+                    
                   </td>
                 </tr>
               ))}

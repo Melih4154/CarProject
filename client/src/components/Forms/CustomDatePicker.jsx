@@ -18,6 +18,7 @@ function CustomDatePicker (props) {
               {...field}
               {...rest}
               placeholderText={props.placeholder}
+              dateFormat = "dd.MM.yyyy"
               selected={value}
               onChange={val => setFieldValue(name, val)}
               className='w-full py-1 px-2 rounded-xl focus:outline-none'

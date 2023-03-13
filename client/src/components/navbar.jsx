@@ -1,12 +1,18 @@
 import { useMediaQuery } from '@react-hook/media-query';
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../redux/authSlice';
 
 function Navbar() {
     const [navbar, setNavbar] = useState(false);
     const { user: currentUser } = useSelector((state) => state.auth);
-    const size = useMediaQuery('(max-width: 812px)')
+    const size = useMediaQuery('(max-width: 812px)');
+    const dispatch = useDispatch();
+
+    const logOut = useCallback(() => {
+        dispatch(logout());
+      }, [dispatch]);
 
 
 
@@ -83,7 +89,7 @@ function Navbar() {
                         className={` ${ size ? navbar ? "block" : "hidden" : ""
                             }`}
                     >
-                        <ul className={`items-center justify-center  ${!size ? 'flex space-x-6' : 'space-y-0'}`} >
+                        <ul className={`items-center justify-center  ${!size ? 'flex space-x-6' : 'space-y-1 space-x-0 pb-4'}`} >
                             <li className="text-white hover:text-amber-400">
                                 <a href="/">Tüm Dosyalar</a>
                             </li>
@@ -93,8 +99,8 @@ function Navbar() {
                             <li className="text-white hover:text-amber-400">
                                 <a href="/">Şifre Değiştir</a>
                             </li>
-                            <li className="text-white hover:text-amber-400">
-                                <a href="/">Çıkış Yap</a>
+                            <li className="text-white hover:text-amber-400" onClick={logOut}>
+                                <span>Çıkış Yap</span>
                             </li>
                         </ul>
                     </div>
