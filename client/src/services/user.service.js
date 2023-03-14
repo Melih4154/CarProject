@@ -9,9 +9,16 @@ const getUsers = () => {
   });;
 };
 
+const passwordUpdate = ( old_password, password, password_again ) => {  
+  return axios.patch(API_URL + "update-password", { old_password, password, password_again } ,{ headers: authHeader() }).then((response) => { 
+    return response.data;
+  });;
+};
+
 
 const userService = {
-  getUsers,
+  getUsers, 
+  passwordUpdate,
 };
 
 export default userService;

@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import DemageDetail from "./pages/DemageDetail.jsx"; 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
+import PaswordChange from "./pages/PaswordChange.jsx";
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
           </Route>
            
           <Route path='login' element={<Login />} />
+          <Route path='change-password' element={<PaswordChange />} />
           <Route path="detail/dosya-bilgileri/:demage_id" element={<DemageDetail />}/>
           <Route path="detail/dat-raporu/:demage_id" element={<DemageDetail/>}/>
           <Route path="detail/sigorta-birimi/:demage_id" element={<DemageDetail/>}/>

@@ -17,19 +17,20 @@ export default function DocumentForm({ status, demage_id }) {
     document: "",
   };
 
-  const handleLogin = (formValue) => {
+  const addDocument = (formValue) => {
     const { title, document } = formValue;
 
     dispatch(addDocument({ document, title, status, demage_id }))
 
   };
+
   return (
     <div className='w-full pl-4 pr-16'>
       <div className='bg-gray-200 py-3 rounded-lg'>
         <Formik
           initialValues={initialValues}
           validationSchema={documentValidation}
-          onSubmit={handleLogin}
+          onSubmit={addDocument}
         >
           {({ setFieldValue }) => (
 
@@ -44,7 +45,7 @@ export default function DocumentForm({ status, demage_id }) {
                     />  
                 </div>
                 <div className="col-span-2">
-                  <CustomDocument name="document" onChange={(event) => setFieldValue("document", event.target.files[0])}/>
+                  <CustomDocument name="document" onChange={(event) => setFieldValue("document", event.target.files[0])} className="w-full"/>
                 </div>
                 <div className="col-span-1"> 
                   <button

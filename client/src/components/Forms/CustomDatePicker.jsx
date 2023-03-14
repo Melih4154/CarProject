@@ -5,10 +5,10 @@ import TextError from '../TextError'
 import 'react-datepicker/dist/react-datepicker.css'
 
 function CustomDatePicker (props) {
-  const { name, ...rest } = props
+  const { name, className,...rest } = props
   return (
     <div> 
-      <Field name={name} className=''>
+      <Field name={name}>
         {({ form, field }) => {
           const { setFieldValue } = form
           const { value } = field
@@ -17,11 +17,13 @@ function CustomDatePicker (props) {
               id={name}
               {...field}
               {...rest}
+              
               placeholderText={props.placeholder}
               dateFormat = "dd.MM.yyyy"
               selected={value}
+              
               onChange={val => setFieldValue(name, val)}
-              className='w-full py-1 px-2 rounded-xl focus:outline-none'
+              className= {className}
             />
           )
         }}

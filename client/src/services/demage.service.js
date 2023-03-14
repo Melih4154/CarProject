@@ -21,10 +21,10 @@ const findOne = (id) => {
 };
 
 const create = ({file_number, full_name, id_number, subject, status, arbitration_number, personel,
-  number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number}) => {
+  number_plate, crash_date, explanation, expert, brand,model, usage, engine_number, type, chassis_number}) => {
   return axios
     .post(API_URL + "demage", {file_number, full_name, id_number, subject, status, arbitration_number, personel,
-      number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number}, { headers: authHeader() })
+      number_plate, crash_date, explanation, expert, brand,model, usage, engine_number, type, chassis_number}, { headers: authHeader() })
     .then((response) => {
       return response.data;
     });

@@ -105,9 +105,9 @@ class UserController {
       );
   }
 
-  updatePassword(req, res) {
+  updatePassword(req, res) {   
     UserService.findOne({ _id: req.user?._id })
-      .then((user) => {
+      .then((user) => {  
         const oldPassword = hashToPassword(req.body.old_password);
         if (user.password != oldPassword) {
           return res

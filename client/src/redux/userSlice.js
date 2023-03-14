@@ -23,6 +23,23 @@ export const fetchUsers = createAsyncThunk(
     }
   }
 );
+
+export const passwordUpdate = createAsyncThunk(
+  "passwordUpdate",
+  async ({old_password, password, password_again},thunkAPI) => {
+    try {
+      const data = await userService.passwordUpdate(old_password, password, password_again);
+      return data;
+    } catch (error) {
+      const message =
+        (error.response && error.response.data && error.response.data.error) ||
+        error.message ||
+        error.toString();
+      thunkAPI.dispatch(setMessage(message));
+      return thunkAPI.rejectWithValue();
+    }
+  }
+);
  
 
 const userSlice = createSlice({
@@ -39,6 +56,19 @@ const userSlice = createSlice({
     });
 
     builder.addCase(fetchUsers.rejected, (state, action) => {
+      state.status = "failed";
+    }); 
+
+    //change-password
+    builder.addCase(passwordUpdate.pending, (state, action) => {
+      state.status = "loading";
+    });
+    builder.addCase(passwordUpdate.fulfilled, (state, action) => {
+      state.data = action.payload;
+      state.status = "succeeded";
+    });
+
+    builder.addCase(passwordUpdate.rejected, (state, action) => {
       state.status = "failed";
     }); 
   },

@@ -39,10 +39,10 @@ export const fetchDemageById = createAsyncThunk("fetchDemageById", async (id,thu
 });
 
 export const addDemage = createAsyncThunk("addDemage", async ({file_number, full_name, id_number, subject, status, arbitration_number, personel,
-  number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number},thunkAPI) => {
+  number_plate, crash_date, explanation, expert, brand,model, usage, engine_number, type, chassis_number},thunkAPI) => {
   try {
     const data = await demageService.create({file_number, full_name, id_number, subject, status, arbitration_number, personel,
-      number_plate, crash_date, explanation, expert, brand, usage, engine_number, type, chassis_number});  
+      number_plate, crash_date, explanation, expert, brand,model, usage, engine_number, type, chassis_number});  
     return data;
   } catch (error) {
     const message =
